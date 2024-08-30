@@ -1,14 +1,9 @@
 import { Appbar, Menu } from "react-native-paper";
 import React, { useState, useRef } from "react";
-import {
-  View,
-  LayoutChangeEvent,
-  findNodeHandle,
-  UIManager,
-} from "react-native";
+import { View, findNodeHandle, UIManager } from "react-native";
 
 interface AppHeaderProps {
-  title: string;
+  readonly title: string;
 }
 
 export default function AppHeader({ title }: AppHeaderProps) {

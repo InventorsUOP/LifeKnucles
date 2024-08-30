@@ -42,23 +42,21 @@ export default function TabLayout() {
   });
 
   return (
-    <>
-      <BottomNavigation
-        shifting={true}
-        navigationState={{ index, routes }}
-        onIndexChange={setIndex}
-        renderScene={renderScene}
-        barStyle={{
-          backgroundColor: "#2E8B57",
-          elevation: 1,
-          borderRadius: 10,
-        }}
-        sceneAnimationEnabled={false}
-        activeColor="white"
-        inactiveColor="black"
-        compact={true}
-        safeAreaInsets={{ bottom: 0 }}
-      />
-    </>
+    <BottomNavigation
+      shifting={true}
+      navigationState={{ index, routes }}
+      onIndexChange={setIndex}
+      renderScene={renderScene}
+      barStyle={{
+        backgroundColor: "#2E8B57",
+        elevation: 1,
+        borderRadius: 10,
+      }}
+      sceneAnimationEnabled={false}
+      activeColor="white"
+      inactiveColor="black"
+      compact={true}
+      safeAreaInsets={{ bottom: 0 }}
+    />
   );
 }
