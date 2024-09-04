@@ -4,6 +4,7 @@ import Home from "./home";
 import Community from "./community";
 import Info from "./info";
 import LeaderBoard from "./leaderboard";
+import Chat from "./chat";
 
 export default function TabLayout() {
   const [index, setIndex] = useState(0);
@@ -23,6 +24,12 @@ export default function TabLayout() {
     {
       key: "leaderboard",
       title: "Status",
+      focusedIcon: "check-circle",
+      unfocusedIcon: "check-circle", 
+    },
+    {
+      key: "chat",
+      title: "Chat",
       focusedIcon: "message",
       unfocusedIcon: "message-outline",
     },
@@ -39,6 +46,7 @@ export default function TabLayout() {
     community: Community,
     info: Info,
     leaderboard: LeaderBoard,
+    chat: Chat,
   });
 
   return (
