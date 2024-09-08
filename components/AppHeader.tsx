@@ -1,6 +1,7 @@
 import { Appbar, Menu } from "react-native-paper";
 import React, { useState, useRef } from "react";
 import { View, findNodeHandle, UIManager } from "react-native";
+import { router } from "expo-router";  // Use expo-router for navigation
 
 interface AppHeaderProps {
   readonly title: string;
@@ -13,13 +14,16 @@ export default function AppHeader({ title }: AppHeaderProps) {
 
   const openMenu = () => {
     if (menuIconRef.current) {
-      UIManager.measure(
-        findNodeHandle(menuIconRef.current),
-        (x, y, width, height, pageX, pageY) => {
-          setMenuPosition({ x: pageX + 70, y: pageY + height + 10 });
-          setMenuVisible(true);
-        }
-      );
+      const menuIconNode = findNodeHandle(menuIconRef.current);
+      if (menuIconNode) {
+        UIManager.measure(
+          menuIconNode,
+          (x, y, width, height, pageX, pageY) => {
+            setMenuPosition({ x: pageX + 70, y: pageY + height + 10 });
+            setMenuVisible(true);
+          }
+        );
+      }
     }
   };
 
@@ -29,7 +33,6 @@ export default function AppHeader({ title }: AppHeaderProps) {
     <View>
       <Appbar.Header className="bg-primary">
         <Appbar.Content title={title} />
-        {/* <Appbar.Action icon="magnify" onPress={() => {}} /> */}
         <Appbar.Action icon="bell" onPress={() => {}} />
         <Appbar.Action
           icon="menu"
@@ -48,9 +51,11 @@ export default function AppHeader({ title }: AppHeaderProps) {
         }}
         anchorPosition={"top"}
       >
-        <Menu.Item onPress={() => {}} title="Account" />
+        {/* Navigate to Account */}
+        <Menu.Item onPress={() => router.push("/(navbar)/account" )} title="Account" />
         <Menu.Item onPress={() => {}} title="Rank" />
-        <Menu.Item onPress={() => {}} title="Setting" />
+        {/* Navigate to Settings */}
+        <Menu.Item onPress={() => router.push("/(navbar)/settings")} title="Setting" />
       </Menu>
     </View>
   );
