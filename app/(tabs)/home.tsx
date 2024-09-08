@@ -1,6 +1,7 @@
 import AppHeader from "@/components/AppHeader";
 import HomeAlert from "@/components/Home/HomeAlert";
 import WildfireMap from "@/components/WildfireMap";
+import { router } from "expo-router";
 import React from "react";
 import { View } from "react-native";
 import { Text, Divider, FAB } from "react-native-paper";
@@ -24,7 +25,7 @@ export default function Home() {
         size="medium"
         mode="elevated"
         className="absolute m-4 right-0 bottom-0 bg-primary"
-        onPress={() => console.log("Pressed FAB")}
+        onPress={() => router.push("/WildFireAlert")}
       />
     </>
   );
