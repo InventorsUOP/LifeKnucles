@@ -1,5 +1,6 @@
 import AppHeader from "@/components/AppHeader";
 import WildfireMap from "@/components/WildfireMap";
+import { router } from "expo-router";
 import React from "react";
 import { Text, View } from "react-native";
 import { FAB } from "react-native-paper";
@@ -19,7 +20,7 @@ export default function Home() {
         size="medium"
         mode="elevated"
         className="absolute m-4 right-0 bottom-0 bg-primary"
-        onPress={() => console.log("Pressed")}
+        onPress={() => router.push("/WildFireAlert")}
       />
     </>
   );
