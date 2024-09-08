@@ -1,9 +1,10 @@
 import AppHeader from "@/components/AppHeader";
+import HomeAlert from "@/components/Home/HomeAlert";
 import WildfireMap from "@/components/WildfireMap";
 import { router } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
-import { FAB } from "react-native-paper";
+import { View } from "react-native";
+import { Text, Divider, FAB } from "react-native-paper";
 
 export default function Home() {
   return (
@@ -12,8 +13,12 @@ export default function Home() {
       <View className="flex-none w-full h-1/3">
         <WildfireMap />
       </View>
-      <View className="w-full h-2/3 bg-white relative ">
-        <Text>Home</Text>
+      <View className="bg-gray-100 flex-1">
+        <Text className="m-5 font-psemibold text-xl text-black">
+          Recent Activities
+        </Text>
+        <Divider className="h-0.5 bg-black ml-5 mr-5" />
+        <HomeAlert />
       </View>
       <FAB
         icon="plus"
