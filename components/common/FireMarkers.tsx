@@ -1,5 +1,6 @@
 import { Image } from "react-native";
 import { Marker } from "react-native-maps";
+import { Icon } from "react-native-paper";
 
 const MapFireIndicator = ({ fireSection }: { fireSection: MapSection }) => {
   const fireIcon = require("../../assets/images/fire.png");
@@ -11,7 +12,7 @@ const MapFireIndicator = ({ fireSection }: { fireSection: MapSection }) => {
 
   return (
     <Marker coordinate={centerCoordinate}>
-      <Image source={fireIcon} style={{ width: 40, height: 40 }} />
+      <Icon source={"fire-circle"} size={40} />
     </Marker>
   );
 };

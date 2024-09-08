@@ -5,15 +5,15 @@ import * as ImagePicker from "expo-image-picker";
 import React, { SetStateAction } from "react";
 import { SubmitHandler } from "react-hook-form";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import CustomButton from "./common/Button";
+import CustomButton from "./common/CustomButton";
 import IconButton from "./common/IconButton";
 
 const WildfireAlertForm = ({
@@ -134,14 +134,14 @@ const WildfireAlertForm = ({
         <View style={styles.photoButtonWrapper}>
           <IconButton
             title="Take Photos"
-            iconUri={require("./../assets/images/camera.png")}
+            iconName={"camera-plus-outline"}
             onPress={() => setShowCamera(true)}
           />
         </View>
         <View style={styles.photoButtonWrapper}>
           <IconButton
             title="Upload Images"
-            iconUri={require("./../assets/images/upload.png")}
+            iconName={"image-plus"}
             onPress={selectImageFromLibrary}
           />
         </View>

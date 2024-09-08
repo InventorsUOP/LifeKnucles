@@ -2,12 +2,12 @@ import { FormColors } from "@/constants/Colors";
 import React from "react";
 import {
   GestureResponderEvent,
-  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import { Icon } from "react-native-paper";
 
 interface Dimensions {
   width: number;
@@ -16,24 +16,21 @@ interface Dimensions {
 
 interface IconButtonProps {
   title: string;
-  iconUri: any;
-  dimensions?: Dimensions;
+  iconName: string;
+  iconSize?: number;
   onPress: (event: GestureResponderEvent) => void;
 }
 
 const IconButton = ({
   title,
-  iconUri,
-  dimensions = { width: 40, height: 40 },
+  iconName,
+  iconSize = 40,
   onPress,
 }: IconButtonProps) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
       <View style={styles.buttonContent}>
-        <Image
-          source={iconUri}
-          style={{ width: dimensions.width, height: dimensions.height }}
-        />
+        <Icon color="#aaa" source={iconName} size={iconSize} />
         <Text style={styles.buttonText}>{title}</Text>
       </View>
     </TouchableOpacity>
