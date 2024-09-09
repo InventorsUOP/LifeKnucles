@@ -7,7 +7,6 @@ import { SubmitHandler } from "react-hook-form";
 import {
   Image,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -63,15 +62,18 @@ const WildfireAlertForm = ({
   };
 
   return (
-    <ScrollView>
-      <Text style={styles.formTitle}> Wildfire Alert Form</Text>
-      <Text style={styles.formDescription}>
-        If you want to remain annonymous, leave name, address, contact number
+    <ScrollView className="p-2">
+      <Text className="text-2xl font-semibold text-center mt-5">
+        Wildfire Alert Form
+      </Text>
+      <Text className="text-center text-base font-light mt-2 mb-4 mx-5">
+        If you want to remain anonymous, leave name, address, and contact number
         blank.
       </Text>
-      <Text>Name</Text>
+
+      <Text className="mb-1">Name</Text>
       <TextInput
-        style={styles.input}
+        className="border border-green-600 p-3 rounded-lg mb-4"
         onChangeText={(event) =>
           setFormData((currentData) => ({
             ...currentData,
@@ -81,9 +83,9 @@ const WildfireAlertForm = ({
         value={formData.name}
       />
 
-      <Text>Address</Text>
+      <Text className="mb-1">Address</Text>
       <TextInput
-        style={styles.input}
+        className="border border-green-600 p-3 rounded-lg mb-4"
         onChangeText={(event) =>
           setFormData((currentData) => ({
             ...currentData,
@@ -93,9 +95,9 @@ const WildfireAlertForm = ({
         value={formData.address}
       />
 
-      <Text>Contact Number</Text>
+      <Text className="mb-1">Contact Number</Text>
       <TextInput
-        style={styles.input}
+        className="border border-green-600 p-3 rounded-lg mb-4"
         onChangeText={(event) =>
           setFormData((currentData) => ({
             ...currentData,
@@ -106,39 +108,34 @@ const WildfireAlertForm = ({
         inputMode="tel"
       />
 
-      <View>
-        {formData.photos.length > 0 ? (
-          <>
-            <Text>Photos Of The Fire</Text>
-            <View style={styles.photosContainer}>
-              {formData.photos.map((photo, index) => (
-                <View key={photo} style={styles.photoContainer}>
-                  <Image source={{ uri: photo }} style={styles.image} />
-                  <TouchableOpacity
-                    style={styles.removeButton}
-                    onPress={() => removePhoto(index)}
-                  >
-                    <Ionicons name="close-circle" size={24} color="red" />
-                  </TouchableOpacity>
-                </View>
-              ))}
-            </View>
-          </>
-        ) : (
-          <View>
-            <Text></Text>
+      {formData.photos.length > 0 && (
+        <>
+          <Text>Photos Of The Fire</Text>
+          <View className="flex flex-row flex-wrap">
+            {formData.photos.map((photo, index) => (
+              <View key={photo} className="relative m-2">
+                <Image source={{ uri: photo }} className="w-24 h-24" />
+                <TouchableOpacity
+                  className="absolute top-1 right-1"
+                  onPress={() => removePhoto(index)}
+                >
+                  <Ionicons name="close-circle" size={24} color="red" />
+                </TouchableOpacity>
+              </View>
+            ))}
           </View>
-        )}
-      </View>
-      <View style={styles.photoBtnContainer}>
-        <View style={styles.photoButtonWrapper}>
+        </>
+      )}
+
+      <View className="flex flex-row justify-center my-3">
+        <View className="flex-1 mx-2">
           <IconButton
             title="Take Photos"
             iconName={"camera-plus-outline"}
             onPress={() => setShowCamera(true)}
           />
         </View>
-        <View style={styles.photoButtonWrapper}>
+        <View className="flex-1 mx-2">
           <IconButton
             title="Upload Images"
             iconName={"image-plus"}
@@ -146,77 +143,12 @@ const WildfireAlertForm = ({
           />
         </View>
       </View>
-      <View style={styles.buttonContainer}>
-        <CustomButton title="Submit" onPress={() => handleSubmitBtn()} />
+
+      <View className="my-5">
+        <CustomButton title="Submit" onPress={handleSubmitBtn} />
       </View>
     </ScrollView>
   );
 };
 
 export default WildfireAlertForm;
-
-const styles = StyleSheet.create({
-  formContainer: {
-    padding: 20,
-  },
-  formTitle: {
-    marginTop: 20,
-    marginLeft: 5,
-    fontSize: 22,
-    fontWeight: "500",
-    textAlign: "center",
-  },
-  formDescription: {
-    marginVertical: 2,
-    marginHorizontal: 20,
-    fontSize: 16,
-    fontWeight: "300",
-    textAlign: "center",
-    marginBottom: 15,
-  },
-  map: {
-    flex: 1,
-  },
-  input: {
-    borderColor: FormColors.border,
-    borderWidth: 1,
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 10,
-  },
-  error: {
-    color: "red",
-    marginBottom: 10,
-  },
-  photosContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  photoContainer: {
-    position: "relative",
-    marginBottom: 10,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    margin: 5,
-  },
-  removeButton: {
-    position: "absolute",
-    top: 5,
-    right: 5,
-  },
-  buttonContainer: {
-    marginVertical: 5,
-  },
-  photoBtnContainer: {
-    marginBottom: 15,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  photoButtonWrapper: {
-    flex: 1,
-    marginHorizontal: 10,
-  },
-});
