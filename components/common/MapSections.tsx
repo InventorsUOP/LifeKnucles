@@ -46,6 +46,11 @@ const MapSections = ({
     };
   };
 
+  const choseTheColor = (entry: any) => {
+    return formData.markedSections.includes(entry.name as Sections)
+      ? "rgba(255, 0, 0, 0.2)"
+      : "rgba(0, 255, 0, 0.2)";
+  };
   const renderedSections = useMemo(
     () =>
       sections.map((entry) => {
@@ -60,11 +65,7 @@ const MapSections = ({
               onPress={() => handleSectionClick(entry.name as Sections)}
               strokeColor={isFireSection ? fireStrokeColor : noFireStrokeColor}
               fillColor={
-                isFireSection
-                  ? "rgba(255, 0, 0, 0.5)"
-                  : formData.markedSections.includes(entry.name as Sections)
-                  ? "rgba(255, 0, 0, 0.2)"
-                  : "rgba(0, 255, 0, 0.2)"
+                isFireSection ? "rgba(255, 0, 0, 0.5)" : choseTheColor(entry)
               }
             />
             {isFireSection && (
