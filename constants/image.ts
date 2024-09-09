@@ -5,7 +5,7 @@ import bgimage from "../assets/images/bg.webp"
 import wildfire from "../assets/images/wildfire1.jpg"
 import backgroundimage from "../assets/images/background-image.jpeg"
 import knuclkes from "../assets/images/background-image.jpeg"
-import safety from "../assets/images/wildfire2.jpeg"
+import safety from "../assets/images/wildfire2.jpg"
 
 
 export default {logo, logobg, path, bgimage,wildfire,backgroundimage,knuclkes,safety};
