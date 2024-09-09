@@ -10,7 +10,7 @@ export default function GetStart() {
       <Stack.Screen name="SafetyPrecautionPage" options={{ title: 'Safety Precaution' }} />
       <Stack.Screen name="AfterFirePage" options={{ title: 'What To Do After A Fire Happen' }} />
       <Stack.Screen name="AppTutorialPage" options={{ title: 'App Tutorial' }} />
-      {/* Add other screens as needed */}
+      
     </Stack>
   );
 }

@@ -1,19 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, ImageBackground, TextInput, ScrollView } from 'react-native';
-import CustomButton from "@/components/CustomButton";
-
+import CustomButton from '@/components/CustomButton'; // Adjust the path to your CustomButton
 
 const backgroundImage = require('../assets/background-image.jpeg');
 
 interface InfoPageProps {
   navigation: {
-    navigate: (page: string) => void;
+    navigate: (screen: string) => void;
   };
 }
 
 const InfoPage: React.FC<InfoPageProps> = ({ navigation }) => {
   const handleNavigation = (page: string) => {
-    navigation.navigate(page);  
+    navigation.navigate(page);  // Navigate to the selected page
   };
 
   return (
@@ -22,7 +21,7 @@ const InfoPage: React.FC<InfoPageProps> = ({ navigation }) => {
         <View style={styles.topBar}>
           <CustomButton
             text="Back to Account"
-            onpress={() => navigation.navigate('Account')}
+            onpress={() => navigation.navigate('Login')} // Assuming you want to navigate to Login here
           />
           <TextInput placeholder="Search..." style={styles.searchBar} />
         </View>
