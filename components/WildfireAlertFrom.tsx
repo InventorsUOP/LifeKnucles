@@ -112,7 +112,7 @@ const WildfireAlertForm = ({
             <Text>Photos Of The Fire</Text>
             <View style={styles.photosContainer}>
               {formData.photos.map((photo, index) => (
-                <View key={index} style={styles.photoContainer}>
+                <View key={photo} style={styles.photoContainer}>
                   <Image source={{ uri: photo }} style={styles.image} />
                   <TouchableOpacity
                     style={styles.removeButton}

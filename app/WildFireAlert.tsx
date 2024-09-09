@@ -24,27 +24,39 @@ const initialValues: FormData = {
 
 const WildfireAlert: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialValues);
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const cameraRef = useRef<CameraView | null>(null);
   const [showCamera, setShowCamera] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === "granted");
+      try {
+        const { status } = await Camera.requestCameraPermissionsAsync();
+        if (status !== "granted") {
+          alert("Camera access is required to take photos");
+        }
+      } catch (error) {
+        console.error("Error requesting camera permissions:", error);
+      }
     })();
   }, []);
 
   const takePicture = async () => {
     if (cameraRef.current) {
-      const photo = await cameraRef.current.takePictureAsync();
-      if (photo) {
-        setFormData((currentData) => ({
-          ...currentData,
-          photos: [...formData.photos, photo.uri],
-        }));
-        setShowCamera(false);
+      try {
+        const photo = await cameraRef.current.takePictureAsync();
+        if (photo) {
+          setFormData((currentData) => ({
+            ...currentData,
+            photos: [...formData.photos, photo.uri],
+          }));
+          setShowCamera(false);
+        }
+      } catch (error) {
+        console.error("Error capturing image:", error);
+        alert("Failed to capture image. Please try again.");
       }
+    } else {
+      console.log("Camera is not ready");
     }
   };
 
