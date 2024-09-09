@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, ImageBackground, TextInput, ScrollView } from 'react-native';
-import CustomButton from '@/components/CustomButton'; // Adjust the path to your CustomButton
-
-const backgroundImage = require('../assets/background-image.jpeg');
+import CustomButton from '@/components/CustomButton';
+import images from '@/constants/image'; 
 
 interface InfoPageProps {
   navigation: {
@@ -12,20 +11,20 @@ interface InfoPageProps {
 
 const InfoPage: React.FC<InfoPageProps> = ({ navigation }) => {
   const handleNavigation = (page: string) => {
-    navigation.navigate(page);  // Navigate to the selected page
+    navigation.navigate(page);
   };
 
   return (
-    <ImageBackground source={backgroundImage} style={styles.background}>
+    <ImageBackground source={images.backgroundImage} style={styles.background}>
       <ScrollView style={styles.container}>
         <View style={styles.topBar}>
           <CustomButton
             text="Back to Account"
-            onpress={() => navigation.navigate('Login')} // Assuming you want to navigate to Login here
+            onpress={() => navigation.navigate('home')} 
           />
           <TextInput placeholder="Search..." style={styles.searchBar} />
         </View>
-        <Image source={backgroundImage} style={styles.image} />
+        <Image source={images.backgroundImage} style={styles.image} />
         <Text style={styles.title}>Welcome to App Info</Text>
         <Text style={styles.content}>
           This page serves as a comprehensive guide to understanding the Knuckles Mountain Range, 
