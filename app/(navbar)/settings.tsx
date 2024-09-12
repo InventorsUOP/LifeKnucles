@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Switch } from "react-native";
+import { View, Switch } from "react-native";
 import { List, Divider } from "react-native-paper";
 import AppHeader from "@/components/AppHeader";
 
