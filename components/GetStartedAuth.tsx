@@ -10,7 +10,7 @@ export default function GetStartedAuth() {
       <View className="flex-row justify-between row space-x-4">
         <CustomButton
           text={"Sign-in"}
-          onpress={() => router.push("Login")}
+          onpress={() => router.push("/login")}
           icon="login"
         />
 

@@ -28,7 +28,7 @@ export default function Login() {
 
         <CustomButton
           text={"Sign-in"}
-          onpress={() => router.push("home")}
+          onpress={() => router.push("/home")}
           icon="login"
         />
       </View>
