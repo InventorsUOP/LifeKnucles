@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { FlatList, View, KeyboardAvoidingView, Platform } from 'react-native';
 import CommentCard from './CommentsCard';
 import AddComment from './AddComments';
 
@@ -60,7 +60,7 @@ export default function CommentList() {
     };
 
     return (
-        <View style={styles.container}>
+        <View className="flex-1 justify-between">
             <FlatList
                 data={comments}
                 renderItem={({ item }) => (
@@ -73,26 +73,11 @@ export default function CommentList() {
                     />
                 )}
                 keyExtractor={(item) => item.id}
-                contentContainerStyle={styles.listContent}
+                contentContainerStyle={{ paddingBottom: 60 }} // This needs to be applied inline or through a custom class
             />
-            <View style={styles.addCommentContainer}>
+            <View className="pt-2 border-t border-gray-300">
                 <AddComment onSubmit={addComment} />
             </View>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'space-between',
-    },
-    listContent: {
-        paddingBottom: 60, // Ensure there's enough space for the AddComment component
-    },
-    addCommentContainer: {
-        padding: 10,
-        borderTopWidth: 1,
-        borderTopColor: '#ccc',
-    },
-});

@@ -21,7 +21,7 @@ function ImageCard({ title, description }) {
         <View className="border p-4 mb-3 rounded-lg bg-white shadow-md">
             <Image
                 source={image.statusImage} // Use the imported image
-                style={{ width: '100%', height: 200, borderRadius: 10 }}
+                className="w-full h-[200px] rounded-[10px]"
                 resizeMode="cover"
             />
             <Text className="font-bold text-lg mt-4">{title}</Text>
