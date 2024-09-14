@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "107454874501",
+    "project_id": "lifeknucles",
+    "storage_bucket": "lifeknucles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107454874501:android:23ec68dc8d1f36e6d73aec",
+        "android_client_info": {
+          "package_name": "com.inventorsuop.lifeknucles"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7RkMuj06sBt65f0m1-kmcJnBMV3KSIgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
