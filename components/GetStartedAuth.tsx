@@ -7,19 +7,19 @@ export default function GetStartedAuth() {
     <View className="mt-6">
       <View className="flex-row space-x-4">
         <TouchableOpacity className="w-[150px] h-[55px]">
-          <Button
-            mode="contained"
-            className="w-full h-full justify-center"
-            contentStyle={{ height: "100%" }}
-            buttonColor="#419A00"
-            textColor="white"
-            labelStyle={{ fontSize: 16 }}
-            onPress={() => console.log("Sign-in Button Pressed")}
-          >
-            <Link href="/home" className="font-pbold">
-              Sign-in
-            </Link>
-          </Button>
+          <Link href="/(auth)/Login" style={{ width: "100%", height: "100%" }}> 
+            <Button
+              mode="contained"
+              className="w-full h-full justify-center"
+              contentStyle={{ height: "100%" }}
+              buttonColor="#419A00"
+              textColor="white"
+              labelStyle={{ fontSize: 16 }}
+              onPress={() => console.log("Sign-in Button Pressed")}
+            >
+              <Text className="font-pbold">Sign-in</Text>
+            </Button>
+          </Link>
         </TouchableOpacity>
 
         <TouchableOpacity className="w-[150px] h-[55px]">
@@ -70,3 +70,4 @@ export default function GetStartedAuth() {
     </View>
   );
 }
+
