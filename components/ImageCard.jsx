@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Icons for like and dislike
+import image from '@/constants/image'; // Import the image constants
 
 function ImageCard({ title, description }) {
     // State for likes and dislikes
@@ -19,7 +20,7 @@ function ImageCard({ title, description }) {
     return (
         <View className="border p-4 mb-3 rounded-lg bg-white shadow-md">
             <Image
-                source={require('../assets/images/fire.jpg')}
+                source={image.statusImage} // Use the imported image
                 style={{ width: '100%', height: 200, borderRadius: 10 }}
                 resizeMode="cover"
             />
@@ -43,4 +44,3 @@ function ImageCard({ title, description }) {
 }
 
 export default ImageCard;
-
