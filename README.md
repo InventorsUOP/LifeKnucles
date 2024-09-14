@@ -210,4 +210,6 @@ To streamline the contribution process, we use standardized issue and pull reque
 
 ### **Pull Request Template:** [Should be Updated]
 
+Use This Template
+
 ### **Issue Template:** [Should be Updated]
