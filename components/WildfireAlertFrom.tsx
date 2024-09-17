@@ -1,5 +1,4 @@
 import { FormData } from "@/app/WildFireAlert";
-import { FormColors } from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import React, { SetStateAction } from "react";
@@ -12,8 +11,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import CustomButton from "./common/CustomButton";
 import IconButton from "./common/IconButton";
+import { Button } from "react-native-paper";
 
 const WildfireAlertForm = ({
   onSubmit,
@@ -144,8 +143,14 @@ const WildfireAlertForm = ({
         </View>
       </View>
 
-      <View className="my-5">
-        <CustomButton title="Submit" onPress={handleSubmitBtn} />
+      <View className="my-5 pt-2">
+        <Button
+          mode="contain"
+          className="bg-green-600"
+          onPress={handleSubmitBtn}
+        >
+          Submit
+        </Button>
       </View>
     </ScrollView>
   );
