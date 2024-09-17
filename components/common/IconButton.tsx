@@ -1,4 +1,3 @@
-import { FormColors } from "@/constants/Colors";
 import React from "react";
 import {
   GestureResponderEvent,
