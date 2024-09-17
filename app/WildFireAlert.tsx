@@ -3,8 +3,9 @@ import MapSections from "@/components/common/MapSections";
 import WildfireAlertForm from "@/components/WildfireAlertFrom";
 import { Camera, CameraView } from "expo-camera";
 import React, { useEffect, useRef, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 import MapView from "react-native-maps";
+import { Button } from "react-native-paper";
 
 export interface FormData {
   markedSections: Sections[];
@@ -22,7 +23,7 @@ const initialValues: FormData = {
   photos: [],
 };
 
-const WildfireAlert: React.FC = () => {
+export default function WildfireAlert() {
   const [formData, setFormData] = useState<FormData>(initialValues);
   const cameraRef = useRef<CameraView | null>(null);
   const [showCamera, setShowCamera] = useState<boolean>(false);
@@ -66,14 +67,11 @@ const WildfireAlert: React.FC = () => {
 
   return (
     <>
-      <View style={styles.container}>
-        <View>
-          <AppHeader title="Alert a Fire" />
-        </View>
-
-        <View style={styles.mapArea}>
+      <AppHeader title="Alert a Fire" />
+      <View className="flex-1">
+        <View className="h-1/2">
           <MapView
-            style={styles.map}
+            style={{ flex: 1 }}
             provider={"google"}
             mapType="satellite"
             initialRegion={{
@@ -87,7 +85,7 @@ const WildfireAlert: React.FC = () => {
           </MapView>
         </View>
 
-        <View style={styles.formArea}>
+        <View className="h-1/2 m-5 pb-10">
           <WildfireAlertForm
             formData={formData}
             setFormData={setFormData}
@@ -98,68 +96,29 @@ const WildfireAlert: React.FC = () => {
       </View>
 
       {showCamera && (
-        <View style={styles.cameraContainer}>
-          <CameraView style={styles.camera} ref={cameraRef} />
-          <View style={styles.cameraButtonContainer}>
-            <TouchableOpacity style={styles.cameraButton} onPress={takePicture}>
-              <Text style={styles.cameraButtonText}>Take Picture</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.cameraButton, styles.cancelButton]}
-              onPress={() => setShowCamera(false)}
+        <View className="absolute inset-0 w-full h-full flex-end">
+          <CameraView
+            className="absolute inset-0 w-full h-full"
+            ref={cameraRef}
+          />
+          <View className="absolute bottom-0 w-full flex-row justify-between p-20">
+            <Button
+              mode="contained"
+              onPress={takePicture}
+              className="bg-primary"
             >
-              <Text style={styles.cameraButtonText}>Cancel</Text>
-            </TouchableOpacity>
+              Take Picture
+            </Button>
+            <Button
+              mode="contained"
+              onPress={() => setShowCamera(false)}
+              className="bg-red"
+            >
+              Cancel
+            </Button>
           </View>
         </View>
       )}
     </>
   );
-};
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "black",
-  },
-  container: {
-    flex: 1,
-  },
-  mapArea: {
-    flex: 0.5,
-  },
-  map: {
-    flex: 1,
-  },
-  formArea: {
-    flex: 0.5,
-    paddingHorizontal: 15,
-    marginVertical: 15,
-  },
-  cameraButtonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 20,
-  },
-  cameraButton: {
-    backgroundColor: "#2E8B57", // Primary color
-    padding: 10,
-    borderRadius: 5,
-  },
-  cancelButton: {
-    backgroundColor: "red",
-  },
-  cameraButtonText: {
-    color: "#fff",
-    fontSize: 16,
-  },
-  cameraContainer: {
-    ...StyleSheet.absoluteFillObject, // Full screen
-    justifyContent: "flex-end",
-  },
-  camera: {
-    ...StyleSheet.absoluteFillObject, // Full screen
-  },
-});
-
-export default WildfireAlert;
+}
