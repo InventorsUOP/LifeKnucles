@@ -1,27 +1,23 @@
-
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { View } from "react-native";
+import { Text } from "react-native-paper";
 
 interface DescriptionProps {
-  text: string;
+  subtitle: string;
+  content: string;
 }
 
-const Description: React.FC<DescriptionProps> = ({ text }) => {
+const Description: React.FC<DescriptionProps> = ({ subtitle, content }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.descriptionText}>{text}</Text>
+    <View className="p-2">
+      <Text variant="titleMedium" className="text-black mt-2">
+        {subtitle}
+      </Text>
+      <Text variant="bodyMedium" className="text-black">
+        {content}
+      </Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginVertical: 20,
-  },
-  descriptionText: {
-    fontSize: 16,
-    color: '#333',
-  },
-});
 
 export default Description;
