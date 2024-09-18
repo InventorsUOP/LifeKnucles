@@ -1,14 +1,14 @@
-import React from 'react';
-import {  Image, StyleSheet, ScrollView } from 'react-native';
-import Images from '@/constants/image'; 
-import Description from '@/components/InfoPage/Description'; 
+import React from "react";
+import { Image, StyleSheet, ScrollView } from "react-native";
+import Images from "@/constants/image";
+import Description from "@/components/InfoPage/Description";
 
 const WildFirePage: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <Image source={Images.wildfire} style={styles.image} />
       <Description
-        title="How Wildfires Happen in the Knuckles Mountain Range"
+        subtitle="How Wildfires Happen in the Knuckles Mountain Range"
         content="The Knuckles Mountain Range, located in Sri Lanka, is renowned for its rich biodiversity and lush landscapes. However, like many mountainous regions, it is also vulnerable to wildfires. Understanding how wildfires occur in this area can help in managing and mitigating their impacts. Here’s an overview of how wildfires happen in the Knuckles Mountain Range and the factors contributing to their occurrence."
       />
       <Description
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 200,
     marginBottom: 20,
   },
