@@ -1,29 +1,26 @@
-import { Stack } from "expo-router";
+// InfoPage/_layout.tsx
 import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import { Slot } from "expo-router";
 
-export default function GetStart() {
+const Layout: React.FC = () => {
   return (
-    <Stack>
-      <Stack.Screen
-        name="KnucklesPage"
-        options={{ title: "What is Knuckles" }}
-      />
-      <Stack.Screen
-        name="WildFirePage"
-        options={{ title: "How WildFire Happen" }}
-      />
-      <Stack.Screen
-        name="SafetyPrecautionPage"
-        options={{ title: "Safety Precaution" }}
-      />
-      <Stack.Screen
-        name="AfterFirePage"
-        options={{ title: "What To Do After A Fire Happen" }}
-      />
-      <Stack.Screen
-        name="AppTutorialPage"
-        options={{ title: "App Tutorial" }}
-      />
-    </Stack>
+    <ScrollView style={styles.container}>
+      <Slot />
+    </ScrollView>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  image: {
+    width: "100%",
+    height: 200,
+    marginBottom: 20,
+  },
+});
+
+export default Layout;

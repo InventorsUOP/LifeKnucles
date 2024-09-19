@@ -43,7 +43,7 @@ export default function InfoPageProps() {
           <View className="mb-5 space-y-3">
             <CustomButton
               text="What is Knuckles"
-              onpress={() => router.push("/KnucklesPage")}
+              onpress={() => router.push("/(page)/KnucklesPage")}
             />
             <CustomButton
               text="How WildFire Happen"
