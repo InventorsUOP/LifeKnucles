@@ -1,6 +1,7 @@
 import { Appbar, Menu } from "react-native-paper";
 import React, { useState, useRef } from "react";
 import { View, findNodeHandle, UIManager } from "react-native";
+import { router } from "expo-router";
 
 interface AppHeaderProps {
   readonly title: string;
@@ -30,7 +31,7 @@ export default function AppHeader({ title }: AppHeaderProps) {
       <Appbar.Header className="bg-primary">
         <Appbar.Content title={title} />
         {/* <Appbar.Action icon="magnify" onPress={() => {}} /> */}
-        <Appbar.Action icon="bell" onPress={() => {}} />
+        <Appbar.Action icon="bell" onPress={() => router.push("/alert")} />
         <Appbar.Action
           icon="menu"
           color="white"
