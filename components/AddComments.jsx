@@ -27,4 +27,9 @@ const AddComments = ({ onSubmit }) => {
     );
 };
 
+// Define prop types
+AddComments.propTypes = {
+    onSubmit: PropTypes.func.isRequired, // Expecting onSubmit to be a function and required
+};
+
 export default AddComments;
