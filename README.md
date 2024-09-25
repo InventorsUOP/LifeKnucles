@@ -1,50 +1,215 @@
-# Welcome to your Expo app 👋
+# LifeKnuckles Wildfire Alert App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a **React Native** app designed to provide real-time alerts and notifications for wildfire incidents in the Knuckles mountain region. The app allows users to report, confirm, and track wildfire events, engaging the community and forest officials in swift responses.
 
-## Get started
+## Table of Contents
 
-1. Install dependencies
+- [Features](#features)
+- [Project Setup](#project-setup)
+- [Branching Strategy](#branching-strategy)
+- [Naming Conventions](#naming-conventions)
+- [Code Quality](#code-quality)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Features
+
+- Real-time wildfire alerts and notifications
+- Map integration to locate fires
+- Role-based actions (report, confirm, accept/decline)
+- Notification escalation (app, SMS, and phone call)
+
+---
+
+## Project Setup
+
+Follow these steps to set up the app on your local machine.
+
+### Prerequisites
+
+- **Node.js** (>=20.x.x)
+- **Yarn** or **npm**
+- **React Native CLI**
+- **Android Studio** or **Xcode** (for iOS development)
+- **Expo Go App** (for test locally)
+
+### Steps to Clone and Run
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/InventorsUOP/LifeKnucles.git
+   cd LifeKnules
+   ```
+
+2. **Install Dependencies**
+
+   Using Yarn:
+
+   ```bash
+   yarn install
+   ```
+
+   Or using npm:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. **Running the App**
 
-   ```bash
-    npx expo start
+   For **Expo go**
+
+   ```
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+   Scan the QR code using expo go app
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   For **iOS**:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   ```bash
+   npx react-native run-ios
+   ```
 
-## Get a fresh project
+   For **Android**:
 
-When you're ready, run:
+   ```bash
+   npx react-native run-android
+   ```
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Branching Strategy
 
-## Learn more
+Our project follows a **feature-branching strategy** to ensure smooth collaboration and clean code management.
 
-To learn more about developing your project with Expo, look at the following resources:
+### Key Rules:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. **Development Branch**:
+   - All new features must be branched off from the `develop` branch.
+2. **Feature Branch Naming**:
 
-## Join the community
+   - Create a feature branch following this pattern:  
+     `feature/<developer_name>/<feature_name>`.
+   - Example:  
+     `feature/john_doe/login-page`
 
-Join our community of developers creating universal apps.
+3. **Branching from Master**:
+   - **Do not** branch from `master` directly.
+   - Branching from `master` is strictly reserved for **release purposes**.
+4. **Merging to Master**:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   - Only allowed during release phases, following strict review procedures.
+
+5. **Code Reviews**:
+   - All feature branches **must be reviewed** by at least one team member before merging.
+   - No direct merges to `develop` or `master` without a review.
+6. **Sonar Gate**:
+   - All code must pass **SonarQube** scans.
+   - Resolve **all SonarQube issues** before merging any branch.
+
+---
+
+## Naming Conventions
+
+Consistency in naming is critical for maintaining readable and understandable code.
+
+### 1. **Page Names**:
+
+- Page names should follow the format:  
+  `Login-Page`, `Dashboard-Page`, etc.
+- When used in the code, they should be renamed as:  
+  `loginPage`, `dashboardPage`.
+
+### 2. **Component Names**:
+
+- Components should follow `PascalCase`.  
+  Example:  
+  `LoginButton`, `FireAlertModal`.
+
+### 3. **File Names**:
+
+- File names should use the same naming conventions as the components and pages:
+  - For a page component: `LoginPage.tsx`
+  - For a reusable component: `LoginButton.tsx`
+
+---
+
+## Code Quality
+
+We ensure adherence to coding standards using **SonarQube** to scan for best practices, vulnerabilities, and code smells.
+
+### SonarQube Rules:
+
+- All SonarQube issues must be **resolved** before a branch can be merged.
+- Regularly run the SonarQube scanner to maintain code quality:
+- Install sonarlint extention for VS Code
+
+---
+
+## Testing [Should be Updated]
+
+### Unit Testing with Jest:
+
+- All new features and bug fixes should include corresponding unit tests.
+- Use **Jest** for testing components and logic:
+
+  ```bash
+  yarn test
+  ```
+
+- Make sure tests pass before submitting a pull request.
+
+### Test Coverage:
+
+- Aim for at least **80% coverage** of unit tests across all files.
+- SonarQube will report on test coverage and highlight any untested code.
+
+---
+
+## Contributing
+
+To contribute to this project, follow these steps:
+
+1. **Create a Branch** from `develop` following the [branching strategy](#branching-strategy).
+2. Work on your feature.
+3. **Ensure** that all SonarQube issues are resolved.
+4. Submit a **pull request** for review.
+5. Your feature will be reviewed by at least one team member.
+6. Once approved, the feature will be merged into `develop`.
+
+### Important:
+
+- **Never branch directly from `master`.**
+- **Never merge directly into `master`.** All merges into `master` should only be done during release phases after code review and approval.
+
+---
+
+## License [Should be Updated]
+
+This project is licensed under the [MIT License](./LICENSE).
+
+---
+
+### Issue and Pull Request Templates
+
+To streamline the contribution process, we use standardized issue and pull request templates.
+
+#### Steps to Add:
+
+1. In your project repository, create a folder named `.github`.
+2. Inside `.github`, create two files:
+   - `ISSUE_TEMPLATE.md`
+   - `PULL_REQUEST_TEMPLATE.md`
+
+---
+
+### **Pull Request Template:** [Should be Updated]
+
+Use This Template
+
+### **Issue Template:** [Should be Updated]
