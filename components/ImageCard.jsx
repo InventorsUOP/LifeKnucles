@@ -4,9 +4,9 @@ import { FontAwesome } from '@expo/vector-icons'; // Icons for like, dislike, an
 import { Button } from 'react-native-paper'; // Import the Button component
 import image from '@/constants/image'; // Import the image constants
 import PropTypes from 'prop-types'; // Import PropTypes
+import React, { memo } from 'react';
 
-// Create a separate IconButton component
-const IconButton = ({ iconName, size, color, onPress, count, countColor }) => {
+const IconButton = memo(({ iconName, size, color, onPress, count, countColor }) => {
     return (
         <Button
             mode="text"
@@ -23,7 +23,8 @@ const IconButton = ({ iconName, size, color, onPress, count, countColor }) => {
             <Text className={`ml-2 text-lg`} style={{ color: countColor }}>{count}</Text>
         </Button>
     );
-};
+});
+
 
 IconButton.propTypes = {
     iconName: PropTypes.string.isRequired, // Icon name required
