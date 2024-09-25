@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { View, Text, Image } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Icons for like, dislike, and comment
 import { Button } from 'react-native-paper'; // Import the Button component
 import image from '@/constants/image'; // Import the image constants
 import PropTypes from 'prop-types'; // Import PropTypes
-import React, { memo } from 'react';
 
+// Create a separate IconComponent for the FontAwesome icon
+const IconComponent = ({ iconName, size, color }) => (
+    <FontAwesome
+        name={iconName}
+        size={size}
+        color={color}
+    />
+);
+
+// Define PropTypes for IconComponent
+IconComponent.propTypes = {
+    iconName: PropTypes.string.isRequired, // Icon name required
+    size: PropTypes.number.isRequired,     // Icon size required
+    color: PropTypes.string.isRequired,    // Icon color required
+};
+
+// Create a memoized IconButton component
 const IconButton = memo(({ iconName, size, color, onPress, count, countColor }) => {
     return (
         <Button
             mode="text"
             onPress={onPress}
-            icon={() => (
-                <FontAwesome
-                    name={iconName}
-                    size={size}
-                    color={color}
-                />
-            )}
+            icon={() => <IconComponent iconName={iconName} size={size} color={color} />}  // Use the IconComponent
             className="flex-row items-center w-20 h-20"
         >
             <Text className={`ml-2 text-lg`} style={{ color: countColor }}>{count}</Text>
@@ -25,7 +35,7 @@ const IconButton = memo(({ iconName, size, color, onPress, count, countColor }) 
     );
 });
 
-
+// Define PropTypes for IconButton
 IconButton.propTypes = {
     iconName: PropTypes.string.isRequired, // Icon name required
     size: PropTypes.number,                // Icon size
@@ -85,10 +95,10 @@ function ImageCard({ title, description }) {
     );
 }
 
-// Define prop types for ImageCard
+// Define PropTypes for ImageCard
 ImageCard.propTypes = {
-    title: PropTypes.string.isRequired, // title is required and should be a string
-    description: PropTypes.string.isRequired, // description is required and should be a string
+    title: PropTypes.string.isRequired,    // Title is required and should be a string
+    description: PropTypes.string.isRequired, // Description is required and should be a string
 };
 
 export default ImageCard;
