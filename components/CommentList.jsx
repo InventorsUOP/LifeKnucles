@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, View, KeyboardAvoidingView, Platform } from 'react-native';
+import { FlatList, View } from 'react-native';
 import CommentCard from './CommentsCard';
 import AddComment from './AddComments';
 

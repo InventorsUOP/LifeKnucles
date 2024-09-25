@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Icons for like, dislike, and comment
 import { Button } from 'react-native-paper'; // Import the Button component
 import image from '@/constants/image'; // Import the image constants
+import PropTypes from 'prop-types'; // Import PropTypes
 
 function ImageCard({ title, description }) {
     // State for likes, dislikes, and comments
@@ -79,11 +80,15 @@ function ImageCard({ title, description }) {
                 >
                     <Text className="text-red-500 text-lg ml-2">{dislikes}</Text>
                 </Button>
-
-                
             </View>
         </View>
     );
 }
+
+// Define prop types
+ImageCard.propTypes = {
+    title: PropTypes.string.isRequired, // title is required and should be a string
+    description: PropTypes.string.isRequired, // description is required and should be a string
+};
 
 export default ImageCard;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const AddComments = ({ onSubmit }) => {
     const [comment, setComment] = useState('');
