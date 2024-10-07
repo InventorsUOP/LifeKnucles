@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { TouchableOpacity, View, Image, ScrollView, Alert } from "react-native";
 import {
   Button,
   Icon,
@@ -7,30 +7,26 @@ import {
   Portal,
   Text,
 } from "react-native-paper";
+import ImageViewing from "react-native-image-viewing";
+import React from "react";
+import { useFireAlertById, useFireAlerts } from "../common/FireAlertProvider";
 
 interface HomeAlertModalProps {
   visible: boolean;
   hideModal: () => void;
   id: string;
-  title: string;
-  date: string;
-  time: string;
-  description: string;
-  confirmedCount: number;
-  spamCount: number;
 }
 
 export default function HomeAlertModal({
   visible,
   hideModal,
   id,
-  title,
-  date,
-  time,
-  description,
-  confirmedCount,
-  spamCount,
 }: Readonly<HomeAlertModalProps>) {
+  const [isImageViewingVisible, setImageViewingVisible] = React.useState(false);
+  const fireAlerts = useFireAlerts();
+  const alert = useFireAlertById(id);
+  const images = alert?.photos.map((uri) => ({ uri })) || [];
+
   return (
     <Portal>
       <Modal
@@ -43,19 +39,50 @@ export default function HomeAlertModal({
           borderRadius: 10,
         }}
       >
-        <Text variant="titleLarge">{title}</Text>
-        <Text className="text-gray mb-2">{date + " " + time}</Text>
+        <Text variant="titleLarge">{alert?.title}</Text>
+        <Text className="text-gray mb-2">
+          {alert?.formattedDate + " " + alert?.formattedTime}
+        </Text>
         <View className="flex-row justify-between">
           <View className="flex-row items-center">
             <Icon source="check-circle" size={20} color={MD2Colors.green500} />
-            <Text className="text-green-500"> {confirmedCount} Confirmed</Text>
+            <Text className="text-green-500">
+              {" "}
+              {(alert?.confirmedBy || []).length} Confirmed
+            </Text>
           </View>
           <View className="flex-row items-center">
             <Icon source="alert-circle" size={20} color={MD2Colors.red500} />
-            <Text className="text-red-500"> {spamCount} Marked as Spam</Text>
+            <Text className="text-red-500">
+              {" "}
+              {(alert?.reportedAsSpamBy || []).length} Marked as Spam
+            </Text>
           </View>
         </View>
-        <Text className="mb-4 mt-2">{description}</Text>
+        <Text className="mb-4 mt-2">{alert?.description}</Text>
+
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <ScrollView horizontal={true}>
+            {images.map((image, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => setImageViewingVisible(true)}
+              >
+                <Image
+                  source={{ uri: image.uri }}
+                  style={{ width: 80, height: 80, margin: 5, borderRadius: 10 }}
+                />
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+
+        <ImageViewing
+          images={images}
+          imageIndex={0}
+          visible={isImageViewingVisible}
+          onRequestClose={() => setImageViewingVisible(false)}
+        />
         <Button onPress={hideModal} className="mt-4">
           Close
         </Button>

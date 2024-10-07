@@ -12,14 +12,16 @@ export interface FormData {
   name: string;
   address: string;
   contactNumber: string;
+  description: string;
   photos: string[];
 }
 
-const initialValues: FormData = {
+export const initialValues: FormData = {
   markedSections: [],
   name: "",
   address: "",
   contactNumber: "",
+  description: "",
   photos: [],
 };
 
