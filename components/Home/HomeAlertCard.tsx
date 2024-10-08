@@ -9,15 +9,10 @@ import {
   Text,
 } from "react-native-paper";
 import HomeAlertModal from "./HomeAlertModal";
+import { useFireAlertById } from "../common/FireAlertProvider";
 
 interface HomeAlertCardProps {
   id: string;
-  title: string;
-  date: string;
-  time: string;
-  description: string;
-  confirmedCount: number;
-  spamCount: number;
   current: boolean;
 }
 
@@ -27,15 +22,11 @@ const fireIcon = () => (
 
 export default function HomeAlertCard({
   id,
-  title,
-  date,
-  time,
-  description,
-  confirmedCount,
-  spamCount,
   current,
 }: Readonly<HomeAlertCardProps>) {
   const [visible, setVisible] = useState(false);
+
+  const alert = useFireAlertById(id);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -49,14 +40,14 @@ export default function HomeAlertCard({
         onPress={showModal}
       >
         <Card.Title
-          title={title}
-          subtitle={date + " " + time}
+          title={alert?.title}
+          subtitle={alert?.formattedDate + " " + alert?.formattedTime}
           titleStyle={{ fontWeight: "600", color: "#111827", fontSize: 18 }}
           subtitleStyle={{ color: "#6b7280" }}
           left={fireIcon}
         />
         <Card.Content>
-          <Text className="text-gray-700">{description}</Text>
+          <Text className="text-gray-700">{alert?.description}</Text>
           <View className="flex-row justify-between">
             <View className="flex-row items-center">
               <Icon
@@ -66,12 +57,15 @@ export default function HomeAlertCard({
               />
               <Text className="text-green-500">
                 {" "}
-                {confirmedCount} Confirmed
+                {(alert?.confirmedBy || []).length} Confirmed
               </Text>
             </View>
             <View className="flex-row items-center">
               <Icon source="alert-circle" size={20} color={MD2Colors.red500} />
-              <Text className="text-red-500"> {spamCount} Marked as Spam</Text>
+              <Text className="text-red-500">
+                {" "}
+                {(alert?.reportedAsSpamBy || []).length} Marked as Spam
+              </Text>
             </View>
           </View>
         </Card.Content>
@@ -82,17 +76,7 @@ export default function HomeAlertCard({
         </Card.Actions>
       </Card>
 
-      <HomeAlertModal
-        visible={visible}
-        hideModal={hideModal}
-        id={id}
-        title={title}
-        date={date}
-        time={time}
-        description={description}
-        confirmedCount={confirmedCount}
-        spamCount={spamCount}
-      />
+      <HomeAlertModal visible={visible} hideModal={hideModal} id={id} />
     </>
   );
 }
