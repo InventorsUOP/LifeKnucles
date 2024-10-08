@@ -12,7 +12,6 @@ export default function AppHeader({ title }: AppHeaderProps) {
   const [modalVisible, setModalVisible] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const menuIconRef = useRef(null);
-  const modalRef = useRef(null);
   const fireAlerts = useFireAlerts();
 
   const openMenu = () => {
