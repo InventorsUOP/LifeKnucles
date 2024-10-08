@@ -1,4 +1,4 @@
-import { TouchableOpacity, View, Image, ScrollView, Alert } from "react-native";
+import { TouchableOpacity, View, Image, ScrollView } from "react-native";
 import {
   Button,
   Icon,
@@ -9,7 +9,7 @@ import {
 } from "react-native-paper";
 import ImageViewing from "react-native-image-viewing";
 import React from "react";
-import { useFireAlertById, useFireAlerts } from "../common/FireAlertProvider";
+import { useFireAlertById } from "../common/FireAlertProvider";
 
 interface HomeAlertModalProps {
   visible: boolean;
@@ -22,10 +22,9 @@ export default function HomeAlertModal({
   hideModal,
   id,
 }: Readonly<HomeAlertModalProps>) {
-  const [isImageViewingVisible, setImageViewingVisible] = React.useState(false);
-  const fireAlerts = useFireAlerts();
+  const [imageViewingVisible, setImageViewingVisible] = React.useState(false);
   const alert = useFireAlertById(id);
-  const images = alert?.photos.map((uri) => ({ uri })) || [];
+  const images = alert?.photos.map((uri, id) => ({ uri, id })) || [];
 
   return (
     <Portal>
@@ -63,9 +62,9 @@ export default function HomeAlertModal({
 
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <ScrollView horizontal={true}>
-            {images.map((image, index) => (
+            {images.map((image) => (
               <TouchableOpacity
-                key={index}
+                key={image.id}
                 onPress={() => setImageViewingVisible(true)}
               >
                 <Image
@@ -80,7 +79,7 @@ export default function HomeAlertModal({
         <ImageViewing
           images={images}
           imageIndex={0}
-          visible={isImageViewingVisible}
+          visible={imageViewingVisible}
           onRequestClose={() => setImageViewingVisible(false)}
         />
         <Button onPress={hideModal} className="mt-4">
