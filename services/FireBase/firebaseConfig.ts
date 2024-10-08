@@ -18,17 +18,10 @@ const firebaseConfig = {
 	appId: APP_ID,
 };
 
-// const firebaseConfig = {
-// 	apiKey: API_KEY,
-// 	projectId: PROJECT_ID,
-// 	storageBucket: STORAGE_BUCKET,
-// 	messagingSenderId: MESSAGING_SENDER_ID,
-// 	appId: APP_ID,
-// };
 console.log("Firebase Config:", firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Auth with AsyncStorage for persistence
+
 const authFirebase = initializeAuth(app, {
 	persistence: getReactNativePersistence(AsyncStorage),
 });
