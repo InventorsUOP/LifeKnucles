@@ -1,11 +1,27 @@
-import React from "react";
-import { ImageBackground, TextInput, View } from "react-native";
-import image from "@/constants/image";
-import { useRouter } from "expo-router";
 import CustomButton from "@/components/CustomButton";
+import image from "@/constants/image";
+import { authFirebase } from "@/services/FireBase/firebaseConfig";
+import { useRouter } from "expo-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { Alert, ImageBackground, Text, TextInput, View } from "react-native";
 
 export default function Login() {
   const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(authFirebase, email, password);
+      router.push("/home");
+    } catch (err: any) {
+      setError(err.message);
+      Alert.alert("Login Error", err.message);
+    }
+  };
 
   return (
     <ImageBackground
@@ -15,22 +31,26 @@ export default function Login() {
     >
       <View className="bg-white/30 p-8 rounded-2xl w-80 shadow-md items-center shadow-2xl">
         <TextInput
-          placeholder="User Name"
+          placeholder="Email"
           placeholderTextColor="#AAA"
-          className="bg-white/50 px-4 py-4 rounded-full mb-10 text-lg text-gray-700 border border-black  w-full font-pregular"
+          className="bg-white/50 px-4 py-4 rounded-full mb-10 text-lg text-gray-700 border border-black w-full font-pregular"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
         <TextInput
           placeholder="Password"
           placeholderTextColor="#AAA"
           secureTextEntry
-          className="bg-white/50 px-4 py-4 rounded-full mb-10 text-lg text-gray-700 border border-black  w-full font-pregular"
+          className="bg-white/50 px-4 py-4 rounded-full mb-10 text-lg text-gray-700 border border-black w-full font-pregular"
+          value={password}
+          onChangeText={setPassword}
         />
-
-        <CustomButton
-          text={"Sign-in"}
-          onpress={() => router.push("home")}
-          icon="login"
-        />
+        {error ? (
+          <Text style={{ color: "red", marginBottom: 10 }}>{error}</Text>
+        ) : null}
+        <CustomButton text={"Sign-in"} onpress={handleLogin} icon="login" />
       </View>
     </ImageBackground>
   );
