@@ -15,12 +15,6 @@ export default function TabLayout() {
       unfocusedIcon: "home-outline",
     },
     {
-      key: "community",
-      title: "Community",
-      focusedIcon: "account-group",
-      unfocusedIcon: "account-group-outline",
-    },
-    {
       key: "Status",
       title: "Status",
       focusedIcon: "message",
