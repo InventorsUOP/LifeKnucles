@@ -1,36 +1,51 @@
 {
-  "expo": {
-    "name": "LifeKnules",
-    "slug": "LifeKnules",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/Logo.jpg",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/bg.webp",
-      "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
-  }
+	"expo": {
+		"name": "LifeKnules",
+		"slug": "LifeKnules",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/Logo.jpg",
+		"scheme": "myapp",
+		"userInterfaceStyle": "automatic",
+		"splash": {
+			"image": "./assets/images/bg.webp",
+			"resizeMode": "cover",
+			"backgroundColor": "#ffffff"
+		},
+		"ios": {
+			"supportsTablet": true,
+			"googleServicesFile": "./GoogleService-Info.plist",
+			"bundleIdentifier": "com.inventorsuop.lifeknucles"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			},
+			"googleServicesFile": "./google-services.json",
+			"package": "com.inventorsuop.lifeknucles"
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "static",
+			"favicon": "./assets/images/favicon.png"
+		},
+		"plugins": [
+			"expo-router",
+			"@react-native-firebase/app",
+			"@react-native-firebase/auth",
+			"@react-native-firebase/crashlytics",
+			[
+				"expo-build-properties",
+				{
+					"ios": {
+						"useFrameworks": "static"
+					}
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true
+		}
+	}
 }

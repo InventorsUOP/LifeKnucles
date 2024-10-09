@@ -6,6 +6,7 @@ import { PaperProvider } from "react-native-paper";
 import { View, ActivityIndicator, ImageBackground } from "react-native";
 import "react-native-reanimated";
 import image from "@/constants/image";
+import { FireAlertsProvider } from "@/components/common/FireAlertProvider";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -58,6 +59,15 @@ export default function RootLayout() {
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="(navbar)" options={{ headerShown: false }} />
       </Stack>
+      <FireAlertsProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(navbar)" options={{ headerShown: false }} />
+          <Stack.Screen name="WildFireAlert" options={{ headerShown: false }} />
+        </Stack>
+      </FireAlertsProvider>
     </PaperProvider>
   );
 }
