@@ -1,6 +1,7 @@
 import { Appbar, Badge, List, Menu, Modal, Portal } from "react-native-paper";
 import React, { useState, useRef } from "react";
 import { View, findNodeHandle, UIManager } from "react-native";
+import { router } from "expo-router";
 import { useFireAlerts } from "./common/FireAlertProvider";
 
 interface AppHeaderProps {
@@ -16,13 +17,13 @@ export default function AppHeader({ title }: AppHeaderProps) {
 
   const openMenu = () => {
     if (menuIconRef.current) {
-      UIManager.measure(
-        findNodeHandle(menuIconRef.current),
-        (x, y, width, height, pageX, pageY) => {
+      const menuIconNode = findNodeHandle(menuIconRef.current);
+      if (menuIconNode) {
+        UIManager.measure(menuIconNode, (x, y, width, height, pageX, pageY) => {
           setMenuPosition({ x: pageX + 70, y: pageY + height + 10 });
           setMenuVisible(true);
-        }
-      );
+        });
+      }
     }
   };
 
@@ -76,9 +77,9 @@ export default function AppHeader({ title }: AppHeaderProps) {
         }}
         anchorPosition={"top"}
       >
-        <Menu.Item onPress={() => {}} title="Account" />
+        <Menu.Item onPress={() => router.push("/account")} title="Account" />
         <Menu.Item onPress={() => {}} title="Rank" />
-        <Menu.Item onPress={() => {}} title="Setting" />
+        <Menu.Item onPress={() => router.push("/settings")} title="Setting" />
       </Menu>
     </View>
   );
