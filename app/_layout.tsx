@@ -59,6 +59,7 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="(navbar)" options={{ headerShown: false }} />
+          <Stack.Screen name="(page)" options={{ headerShown: false }} />
           <Stack.Screen name="WildFireAlert" options={{ headerShown: false }} />
         </Stack>
       </FireAlertsProvider>
