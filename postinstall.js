@@ -7,7 +7,7 @@ function log(...args) {
 	console.log(chalk.yellow("[react-native-maps]"), ...args);
 }
 
-reactNativeMaps = async function () {
+var reactNativeMaps = async function () {
 	log(
 		"📦 Creating web compatibility of react-native-maps using an empty module loaded on web builds"
 	);
