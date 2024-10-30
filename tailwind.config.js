@@ -17,6 +17,8 @@ module.exports = {
       },
       gray: {
         100: "#EEEEEE",
+        200: "#555",
+        300:  "#888"
       },
       goldenyellow: {
         100:"#ffa91a"

@@ -6,5 +6,6 @@ import wildfire from "../assets/images/info/wildfire1.jpg"
 import backgroundimage from "../assets/images/info/background-image.jpeg"
 import knuclkes from "../assets/images/info/background-image.jpeg"
 import safety from "../assets/images/info/wildfire2.jpg"
+import knucles from "../assets/images/info/knucles.png"
 
-export default {logo, logobg, path, bgimage, wildfire, backgroundimage, knuclkes, safety};
+export default {logo, logobg, path, bgimage, wildfire, backgroundimage, knuclkes, safety, knucles};
