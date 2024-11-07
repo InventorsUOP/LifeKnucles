@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, Image, TextInput, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import images from "@/constants/image";
 import { useRouter } from "expo-router";
 import AppHeader from "@/components/AppHeader";
@@ -38,13 +45,15 @@ export default function InfoPageProps() {
   const router = useRouter();
 
   const renderItem = ({ item }) => (
-    <View className="p-1 border-b-2 border-b-indigo-500">
-      <Text className="text-lg mb-1 font-semibold">{item.title}</Text>
-      <Text className="text-sm text-gray-200 text-justify" numberOfLines={2}>
-        {item.summary}
-      </Text>
-      <Text className="text-xs text-gray-300 mt-1">{item.date}</Text>
-    </View>
+    <TouchableOpacity onPress={() => router.push("../blogPage")}>
+      <View className="p-1 border-b-2 border-b-indigo-500">
+        <Text className="text-lg mb-1 font-semibold">{item.title}</Text>
+        <Text className="text-sm text-gray-200 text-justify" numberOfLines={2}>
+          {item.summary}
+        </Text>
+        <Text className="text-xs text-gray-300 mt-1">{item.date}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
