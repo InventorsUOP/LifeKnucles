@@ -13,6 +13,9 @@ import {
 } from "react-native";
 import IconButton from "./common/IconButton";
 import { Button } from "react-native-paper";
+import { createFireAlert } from "@/services/FireBase/fireAlertService";
+import { uploadPhoto } from "@/services/FireBase/fileUploadService";
+import { router } from "expo-router";
 
 const WildfireAlertForm = ({
   onSubmit,
@@ -25,8 +28,24 @@ const WildfireAlertForm = ({
   setFormData: React.Dispatch<SetStateAction<FormData>>;
   setShowCamera: React.Dispatch<SetStateAction<boolean>>;
 }) => {
-  const handleSubmitBtn = () => {
-    console.log(formData);
+  const handleSubmitBtn = async () => {
+    try {
+      const uploadedPhotos = await uploadPhoto(formData.photos);
+      console.log(formData);
+      await createFireAlert(
+        "uid",
+        formData.name,
+        formData.address,
+        formData.contactNumber,
+        formData.markedSections,
+        formData.description,
+        uploadedPhotos
+      );
+      router.push("/home"); // TODO: Handle this with callback funtion. not here
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit form. Please try again.");
+    }
   };
 
   const removePhoto = (index: number) => {
@@ -105,6 +124,18 @@ const WildfireAlertForm = ({
         }
         value={formData.contactNumber}
         inputMode="tel"
+      />
+
+      <Text className="mb-1">Description</Text>
+      <TextInput
+        className="border border-green-600 p-3 rounded-lg mb-4"
+        onChangeText={(event) =>
+          setFormData((currentData) => ({
+            ...currentData,
+            description: event,
+          }))
+        }
+        value={formData.description}
       />
 
       {formData.photos.length > 0 && (

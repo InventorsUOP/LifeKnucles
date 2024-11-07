@@ -1,6 +1,6 @@
 const sections = [
   {
-    name: "Section 2",
+    name: "2",
     coordinates: [
       { latitude: 7.4879, longitude: 80.75506 },
       { latitude: 7.52126, longitude: 80.73172 },
@@ -9,7 +9,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 3",
+    name: "3",
     coordinates: [
       { latitude: 7.45522, longitude: 80.72485 },
       { latitude: 7.49199, longitude: 80.68434 },
@@ -18,7 +18,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 4",
+    name: "4",
     coordinates: [
       { latitude: 7.41437, longitude: 80.72416 },
       { latitude: 7.43684, longitude: 80.66168 },
@@ -28,7 +28,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 5",
+    name: "5",
     coordinates: [
       { latitude: 7.39667, longitude: 80.74751 },
       { latitude: 7.37079, longitude: 80.73103 },
@@ -39,7 +39,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 6",
+    name: "6",
     coordinates: [
       { latitude: 7.40501, longitude: 80.82167 },
       { latitude: 7.37505, longitude: 80.83437 },
@@ -50,7 +50,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 7",
+    name: "7",
     coordinates: [
       { latitude: 7.44246, longitude: 80.83334 },
       { latitude: 7.45063, longitude: 80.87454 },
@@ -60,7 +60,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 8",
+    name: "8",
     coordinates: [
       { latitude: 7.47412, longitude: 80.80673 },
       { latitude: 7.49692, longitude: 80.8548 },
@@ -71,7 +71,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 9",
+    name: "9",
     coordinates: [
       { latitude: 7.49046, longitude: 80.75214 },
       { latitude: 7.50373, longitude: 80.79472 },
@@ -82,7 +82,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 11",
+    name: "11",
     coordinates: [
       { latitude: 7.45539, longitude: 80.72296 },
       { latitude: 7.41284, longitude: 80.72511 },
@@ -92,7 +92,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 12",
+    name: "12",
     coordinates: [
       { latitude: 7.43974, longitude: 80.76862 },
       { latitude: 7.48841, longitude: 80.75146 },
@@ -102,7 +102,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 13",
+    name: "13",
     coordinates: [
       { latitude: 7.43122, longitude: 80.79231 },
       { latitude: 7.44212, longitude: 80.83317 },
@@ -112,7 +112,7 @@ const sections = [
     ],
   },
   {
-    name: "Section 14",
+    name: "14",
     coordinates: [
       { latitude: 7.39752, longitude: 80.77309 },
       { latitude: 7.42203, longitude: 80.78064 },

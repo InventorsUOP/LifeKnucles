@@ -3,6 +3,7 @@ import React, { SetStateAction, useMemo } from "react";
 import { Polygon } from "react-native-maps";
 import MapFireIndicator from "./FireMarkers";
 import sections from "./SectionCoordinates";
+import { useFireAlerts } from "./FireAlertProvider";
 
 // Define constants outside the component
 const noFireStrokeColor = "#00FF00";
@@ -15,10 +16,13 @@ const MapSections = ({
   formData: FormData;
   setFormData: React.Dispatch<SetStateAction<FormData>>;
 }) => {
-  const fireSectionsSet = useMemo(
-    () => new Set<Sections>(["Section 3", "Section 7"]),
-    []
-  );
+  const fireAlerts = useFireAlerts();
+  const fireSectionsSet = useMemo(() => new Set<Sections>([]), []);
+  fireAlerts.forEach((alert) => {
+    alert.markedSections.forEach((section) =>
+      fireSectionsSet.add(section as Sections)
+    );
+  });
 
   const handleSectionClick = (sectionName: Sections) => {
     setFormData((currentData) => ({
