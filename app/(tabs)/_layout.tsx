@@ -3,7 +3,7 @@ import { BottomNavigation } from "react-native-paper";
 import Home from "./home";
 import Community from "./community";
 import Info from "./info";
-import LeaderBoard from "./leaderboard";
+import Status from "./status";
 
 export default function TabLayout() {
   const [index, setIndex] = useState(0);
@@ -21,7 +21,7 @@ export default function TabLayout() {
       unfocusedIcon: "account-group-outline",
     },
     {
-      key: "leaderboard",
+      key: "Status",
       title: "Status",
       focusedIcon: "message",
       unfocusedIcon: "message-outline",
@@ -38,7 +38,7 @@ export default function TabLayout() {
     home: Home,
     community: Community,
     info: Info,
-    leaderboard: LeaderBoard,
+    Status: Status,
   });
 
   return (
