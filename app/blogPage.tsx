@@ -1,12 +1,10 @@
-import {
-  ScrollView,
-  Image,
-  StyleSheet,
-  ImageSourcePropType,
-} from "react-native";
+import { ScrollView, Image } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 import { useRouter } from "expo-router";
-import { useBlogPosts } from "@/components/common/BlogPostProvider";
+import {
+  useBlogPostById,
+  useBlogPosts,
+} from "@/components/common/BlogPostProvider";
 
 // interface CustomBlogPageProps {
 //   title: string;
@@ -24,6 +22,7 @@ import { useBlogPosts } from "@/components/common/BlogPostProvider";
 export default function BlogPage() {
   const router = useRouter();
   const blogPosts = useBlogPosts();
+  const blogPost = useBlogPostById();
 
   return (
     <>
@@ -33,47 +32,26 @@ export default function BlogPage() {
         <>
           <Appbar.Header className="bg-primary">
             <Appbar.BackAction onPress={() => router.back()} />
-            <Appbar.Content title={blogPosts[0].title} />
+            <Appbar.Content title={blogPost.title} />
           </Appbar.Header>
-          <ScrollView style={styles.container}>
+          <ScrollView className="pt-5 flex-1 p-5">
             {/* {image && <Image source={{ uri: image }} style={styles.image} />} */}
-            <Image source={blogPosts[0].image} style={styles.image} />
-            <Text style={styles.title}>{blogPosts[0].title}</Text>
-            <Text style={styles.metadata}>{blogPosts[0].date}</Text>
-            <Text style={styles.content}>{blogPosts[0].content}</Text>
+            <Image
+              source={blogPost.image}
+              className="h-[200] w-full mb-5 rounded-md"
+            />
+            <Text variant="headlineSmall" className="text-black font-psemibold">
+              {blogPost.title}
+            </Text>
+            <Text variant="labelSmall" className="text-black">
+              {blogPost.date}
+            </Text>
+            <Text className="text-justify text-black pt-5" variant="bodyLarge">
+              {blogPost.content}
+            </Text>
           </ScrollView>
         </>
       )}
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#fff",
-  },
-  image: {
-    width: "100%",
-    height: 200,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 8,
-    color: "#333",
-  },
-  metadata: {
-    fontSize: 14,
-    color: "#666",
-    marginBottom: 16,
-  },
-  content: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: "#444",
-  },
-});

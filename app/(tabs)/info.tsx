@@ -10,42 +10,23 @@ import {
 import images from "@/constants/image";
 import { useRouter } from "expo-router";
 import AppHeader from "@/components/AppHeader";
-
-const blogPosts = [
-  {
-    id: "1",
-    title: "How Wildfires Start",
-    summary:
-      "Wildfires in the Knuckles Mountain Range can start from various sources: Natural Causes, Human Activities, and Contributing Factors.",
-    content:
-      "React Native allows you to create mobile applications that work across both Android and iOS platforms...",
-    date: "2024-10-01",
-  },
-  {
-    id: "2",
-    title: "How Wildfires Happen in the Knuckles Mountain Range",
-    summary:
-      "The Knuckles Mountain Range, located in Sri Lanka, is renowned for its rich biodiversity and lush landscapes. However, like many mountainous regions, it is also vulnerable to wildfires. Understanding how wildfires occur in this area can help in managing and mitigating their impacts. Here’s an overview of how wildfires happen in the Knuckles Mountain Range and the factors contributing to their occurrence.",
-    content:
-      "Firebase offers a suite of tools for app development, including authentication, real-time databases...",
-    date: "2024-10-05",
-  },
-  {
-    id: "3",
-    title: "Impacts of Wildfires",
-    summary:
-      "Wildfires in the Knuckles Mountain Range can have significant impacts, including Biodiversity Loss, Soil Erosion, and Air Quality degradation.",
-    content:
-      "With react-navigation, you can easily navigate between different screens in your app...",
-    date: "2024-10-10",
-  },
-];
+import {
+  useBlogPosts,
+  useSetPostID,
+} from "@/components/common/BlogPostProvider";
 
 export default function InfoPageProps() {
   const router = useRouter();
+  const blogPosts = useBlogPosts();
+  const setPostID = useSetPostID();
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => router.push("../blogPage")}>
+    <TouchableOpacity
+      onPress={() => {
+        setPostID(item.id);
+        router.push("../blogPage");
+      }}
+    >
       <View className="p-1 border-b-2 border-b-indigo-500">
         <Text className="text-lg mb-1 font-semibold">{item.title}</Text>
         <Text className="text-sm text-gray-200 text-justify" numberOfLines={2}>
