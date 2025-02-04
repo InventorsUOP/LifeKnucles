@@ -1,15 +1,36 @@
+import React, { useState } from "react";
+import { View, ScrollView, StyleSheet } from "react-native";
 import AppHeader from "@/components/AppHeader";
-import React from "react";
-import { Text, View } from "react-native";
+import StatusImage from "@/components/community/StatusImage";
+import StatusReactions from "@/components/community/StatusReactions";
+import StatusComment from "@/components/community/StatusComment";
+import StatusInput from "@/components/community/StatusInput";
 
-export default function Community() {
+export default function Status() {
+  const [comments, setComments] = useState<Array<{ text: string; user: string }>>([]);
+
+  const handleComment = (text: string) => {
+    setComments([...comments, { text, user: "You" }]);
+  };
+
   return (
-    <>
-      <AppHeader title="Community Support" />
-      <View className="w-full flex justify-center items-center h-full bg-white">
-        <Text className="text-3xl font-pblack"> textInComponent </Text>
-        <Text>Community</Text>
-      </View>
-    </>
+    <View style={styles.container}>
+      <ScrollView>
+        <AppHeader  title="life-kunuckel"/>
+        <StatusImage/>
+        <StatusReactions />
+        {comments.map((comment, index) => (
+          <StatusComment key={index} text={comment.text} user={comment.user} />
+        ))}
+      </ScrollView>
+      <StatusInput onComment={handleComment} />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});
